@@ -7,33 +7,36 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import Login from './pages/Login';
 import ErrorPage from './pages/ErrorPage';
 import AuthProvider from './context/AuthProvider';
+import PrivateRoute from './privateRoute/PrivateRoute';
+import Home from './pages/Home';
 
 function App() {
+  // console.log(process.env.REACT_APP_BACKEND_URL)
   return (
     <div className="App">
       <AuthProvider>
         <Router>
           <Header />
           <Switch>
-            <Route exact path='/'  >
+            <Route exact path='/' >
               <Redirect to='/home' />
             </Route>
 
-            <Route exact path='/home' />
+            <Route exact path='/home' component={Home}/>
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' />
 
-            {/* <PrivateRoute exact path='/all-doctor'>
+            <PrivateRoute exact path='/book-now'>
 
-
+    hello
 
             </PrivateRoute>
 
-            <PrivateRoute exact path='/doctor/:id'>
+            <PrivateRoute exact path='/chekout'>
 
+asd
 
-
-            </PrivateRoute> */}
+            </PrivateRoute>
 
             <Route path='/*' component={ErrorPage} />
           </Switch>

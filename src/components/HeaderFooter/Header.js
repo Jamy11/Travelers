@@ -13,8 +13,8 @@ const Header = () => {
                 <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
                     <Nav.Link as={HashLink} to='/home#home'>Home</Nav.Link>
                     <Nav.Link as={HashLink} to='/home#services'>Services</Nav.Link>
-                    <Nav.Link as={HashLink} to='/home#location'>Locations</Nav.Link>
-                    <Nav.Link as={Link} to='/all-doctor'>All Doctor</Nav.Link>
+                    <Nav.Link as={Link} to='/book-now'>Book Now</Nav.Link>
+                    <Nav.Link as={Link} to='/chekout'>Checkout</Nav.Link>
 
                     {user.email ?
                         <>
