@@ -14,11 +14,12 @@ const Header = () => {
                     <Nav.Link as={HashLink} to='/home#home'>Home</Nav.Link>
                     <Nav.Link as={HashLink} to='/home#services'>Services</Nav.Link>
                     <Nav.Link as={Link} to='/book-now'>Book Now</Nav.Link>
-                    <Nav.Link as={Link} to='/chekout'>Checkout</Nav.Link>
 
                     {user.email ?
                         <>
-                            
+                            <Nav.Link as={Link} to='/my-orders'>My Orders</Nav.Link>
+                            <Nav.Link as={Link} to='/manage-all-orders'>Manage All Orders</Nav.Link>
+                            <Nav.Link as={Link} to='/add'>Add A New Service</Nav.Link>
                             <Nav.Link onClick={logOut}>Log Out</Nav.Link>
                             <Navbar.Text>
                                 Signed in as: <a >{user.displayName? user.displayName:user.email}</a>

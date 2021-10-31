@@ -9,6 +9,8 @@ import ErrorPage from './pages/ErrorPage';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './privateRoute/PrivateRoute';
 import Home from './pages/Home';
+import BookNow from './pages/BookNow';
+import MyOrders from './pages/MyOrders';
 
 function App() {
   // console.log(process.env.REACT_APP_BACKEND_URL)
@@ -22,20 +24,18 @@ function App() {
               <Redirect to='/home' />
             </Route>
 
-            <Route exact path='/home' component={Home}/>
+            <Route exact path='/home' component={Home} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' />
 
             <PrivateRoute exact path='/book-now'>
 
-    hello
+              <BookNow />
 
             </PrivateRoute>
 
-            <PrivateRoute exact path='/chekout'>
-
-asd
-
+            <PrivateRoute exact path='/my-orders'>
+              <MyOrders />
             </PrivateRoute>
 
             <Route path='/*' component={ErrorPage} />
