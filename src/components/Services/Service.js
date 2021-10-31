@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { failed, notify } from '../helperToast';
 
@@ -41,6 +41,9 @@ const Service = ({ item }) => {
               <h2 className="mt-4 mb-8 text-xs font-semibold tracking-widest text-black uppercase lg:mt-0 title-font text-4xl font-bold">{item.name}</h2>
               <p className="mb-3 text-base leading-relaxed text-blueGray-500">
                 {item.description} <br />
+              </p>
+              <p>
+              Package 4 Days Cost: {item.cost}
               </p>
             </div>
 

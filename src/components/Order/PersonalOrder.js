@@ -3,8 +3,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { Button } from 'react-bootstrap'
-import useMyOrder from '../../hooks/useMyOrder'
-import useAuth from '../../hooks/useAuth'
 import { notify } from '../helperToast';
 
 
@@ -13,16 +11,18 @@ const PersonalOrder = ({ order, deleteOrderFromMyOrder }) => {
 
 
     const deleteOrder = () => {
-        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/my-orders/${order._id}`)
-            .then(res => {
-                if (res?.data?.acknowledged) {
-                    deleteOrderFromMyOrder(order._id)
-                    notify('Removed Order')
-                }
-                else {
+        if (window.confirm('Are you sure you wnat to delete this')) {
+            axios.delete(`${process.env.REACT_APP_BACKEND_URL}/my-orders/${order._id}`)
+                .then(res => {
+                    if (res?.data?.acknowledged) {
+                        deleteOrderFromMyOrder(order._id)
+                        notify('Removed Order')
+                    }
+                    else {
 
-                }
-            })
+                    }
+                })
+        }
     }
     return (
         <div>
@@ -36,6 +36,9 @@ const PersonalOrder = ({ order, deleteOrderFromMyOrder }) => {
                             <h2 className="mt-4 mb-8 text-xs font-semibold tracking-widest text-black uppercase lg:mt-0 title-font text-4xl font-bold">{order.name}</h2>
                             <p className="mb-3 text-base leading-relaxed text-blueGray-500">
                                 {order.description} <br />
+                            </p>
+                            <p>
+                                Package 4 Days Cost: {order.cost}
                             </p>
                         </div>
 

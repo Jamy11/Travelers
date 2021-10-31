@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/HeaderFooter/Footer';
@@ -12,6 +11,7 @@ import Home from './pages/Home';
 import BookNow from './pages/BookNow';
 import MyOrders from './pages/MyOrders';
 import AllOrderPage from './pages/AllOrderPage';
+import AddService from './pages/AddService';
 
 function App() {
   // console.log(process.env.REACT_APP_BACKEND_URL)
@@ -30,9 +30,7 @@ function App() {
             <Route exact path='/register' />
 
             <PrivateRoute exact path='/book-now'>
-
               <BookNow />
-
             </PrivateRoute>
 
             <PrivateRoute exact path='/my-orders'>
@@ -44,7 +42,7 @@ function App() {
             </PrivateRoute>
 
             <PrivateRoute exact path='/add'>
-              <AllOrderPage />
+              <AddService />
             </PrivateRoute>
 
             <Route path='/*' component={ErrorPage} />
