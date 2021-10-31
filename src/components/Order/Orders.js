@@ -13,7 +13,11 @@ const Orders = () => {
     return (
         <div>
             <h1 className='text-center font-bold pt-6'>My Orders</h1>
-            {myOrder.map(order=> <PersonalOrder deleteOrderFromMyOrder={deleteOrderFromMyOrder} order={order} key={order._id}/>)}
+            {myOrder.length>=1?
+            
+            myOrder.map(order=> <PersonalOrder deleteOrderFromMyOrder={deleteOrderFromMyOrder} order={order} key={order._id}/>)
+            :
+            <h1 className='text-center font-bold pt-6 text-red-500'>Add Someting</h1>}
             
         </div>
     )

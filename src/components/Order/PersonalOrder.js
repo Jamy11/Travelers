@@ -8,22 +8,21 @@ import useAuth from '../../hooks/useAuth'
 import { notify } from '../helperToast';
 
 
-const PersonalOrder = ({order , deleteOrderFromMyOrder}) => {
+const PersonalOrder = ({ order, deleteOrderFromMyOrder }) => {
 
 
 
-    const deleteOrder =()=>{
+    const deleteOrder = () => {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/my-orders/${order._id}`)
-     .then(res =>{ 
-         if(res?.data?.acknowledged){
-            deleteOrderFromMyOrder(order._id)
-            notify('Removed Order')
-         }
-         else{
+            .then(res => {
+                if (res?.data?.acknowledged) {
+                    deleteOrderFromMyOrder(order._id)
+                    notify('Removed Order')
+                }
+                else {
 
-         }
-
-    })
+                }
+            })
     }
     return (
         <div>

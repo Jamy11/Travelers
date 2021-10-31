@@ -11,6 +11,7 @@ import PrivateRoute from './privateRoute/PrivateRoute';
 import Home from './pages/Home';
 import BookNow from './pages/BookNow';
 import MyOrders from './pages/MyOrders';
+import AllOrderPage from './pages/AllOrderPage';
 
 function App() {
   // console.log(process.env.REACT_APP_BACKEND_URL)
@@ -36,6 +37,14 @@ function App() {
 
             <PrivateRoute exact path='/my-orders'>
               <MyOrders />
+            </PrivateRoute>
+
+            <PrivateRoute exact path='/manage-all-orders'>
+              <AllOrderPage />
+            </PrivateRoute>
+
+            <PrivateRoute exact path='/add'>
+              <AllOrderPage />
             </PrivateRoute>
 
             <Route path='/*' component={ErrorPage} />
