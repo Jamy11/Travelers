@@ -1,6 +1,30 @@
 import React from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { Button } from 'react-bootstrap'
+import useMyOrder from '../../hooks/useMyOrder'
+import useAuth from '../../hooks/useAuth'
+import { notify } from '../helperToast';
 
-const PersonalOrder = ({order}) => {
+
+const PersonalOrder = ({order , deleteOrderFromMyOrder}) => {
+
+
+
+    const deleteOrder =()=>{
+        axios.delete(`${process.env.REACT_APP_BACKEND_URL}/my-orders/${order._id}`)
+     .then(res =>{ 
+         if(res?.data?.acknowledged){
+            deleteOrderFromMyOrder(order._id)
+            notify('Removed Order')
+         }
+         else{
+
+         }
+
+    })
+    }
     return (
         <div>
             <div className="container items-center px-5 py-12 lg:px-20">
@@ -17,9 +41,9 @@ const PersonalOrder = ({order}) => {
                         </div>
 
                     </div>
-
+                    <Button className="btn btn-danger" onClick={() => deleteOrder()}>Delete</Button>
                 </div>
-                {/* <ToastContainer /> */}
+                <ToastContainer />
             </div>
         </div>
     )

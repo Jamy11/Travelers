@@ -5,28 +5,11 @@ import useAuth from '../../hooks/useAuth'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { failed, notify } from '../helperToast';
 
 
 const Service = ({ item }) => {
   const { user } = useAuth()
-  const notify = () => toast.success('Order Placed 🦄 ', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
-  const failed = () => toast.error('Could Not add item', {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-  });
 
   const addToCart = (bookedItem) => {
     bookedItem.useremail = user.email;
@@ -36,10 +19,10 @@ const Service = ({ item }) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/service/order`, bookedItem)
       .then(function (response) {
         if (response.data.insertedId) {
-          notify()
+          notify('Order Placed 🦄 ')
         }
         else {
-          failed()
+          failed('Could Not add item')
         }
       })
       .catch(function (error) {

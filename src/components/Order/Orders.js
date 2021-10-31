@@ -5,11 +5,15 @@ import PersonalOrder from './PersonalOrder'
 
 const Orders = () => {
     const { user } = useAuth()
-    const { myOrder } = useMyOrder(user.email)
+    const { myOrder , setMyOrder } = useMyOrder(user.email)
+    const deleteOrderFromMyOrder = (id)=>{
+        const newOrderList = myOrder.filter(orderId=> orderId._id !== id)
+        setMyOrder(newOrderList)
+    }
     return (
         <div>
             <h1 className='text-center font-bold pt-6'>My Orders</h1>
-            {myOrder.map(order=> <PersonalOrder order={order} key={order._id}/>)}
+            {myOrder.map(order=> <PersonalOrder deleteOrderFromMyOrder={deleteOrderFromMyOrder} order={order} key={order._id}/>)}
             
         </div>
     )
